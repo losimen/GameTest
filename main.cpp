@@ -8,8 +8,8 @@ int main()
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
 
-    Uint32 frameStart;
-    int frameTime;
+    unsigned frameStart;
+    unsigned frameTime;
 
     while (game.running())
     {

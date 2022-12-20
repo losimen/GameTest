@@ -86,9 +86,7 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     isRunning = true;
 
-    SDL_Surface *tmpSurface = IMG_Load("assets/90.png");
-    playerTex = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    SDL_FreeSurface(tmpSurface);
+    playerTex = TextureManager::loadTexture("assets/90.png", renderer);
 }
 
 
