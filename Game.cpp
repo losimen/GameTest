@@ -1,11 +1,7 @@
 // GameTest by losimen 18.12.2022
 #include "Game.h"
 
-
-SDL_Texture *playerTex;
-SDL_Rect srcR, destR;
-unsigned cnt;
-
+GameObject *player;
 
 bool Game::running() const
 {
@@ -31,12 +27,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    cnt++;
-    destR.h = 32;
-    destR.w = 32;
-    destR.x = cnt;
-
-    std::cout << cnt << std::endl;
+    player->update();
 }
 
 
@@ -44,7 +35,7 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
 
-    SDL_RenderCopy(renderer, playerTex, nullptr, &destR);
+    player->render();
 
     SDL_RenderPresent(renderer);
 }
@@ -86,7 +77,7 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     isRunning = true;
 
-    playerTex = TextureManager::loadTexture("assets/90.png", renderer);
+    player = new GameObject("assets/90.png", renderer);
 }
 
 
