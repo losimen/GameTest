@@ -9,6 +9,7 @@
 
 #include "TextureManager.h"
 #include "GameObject.h"
+#include "ECS.h"
 
 
 class Game

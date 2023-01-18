@@ -1,11 +1,15 @@
 // GameTest by losimen 18.12.2022
 #include "Game.h"
 #include "Map.h"
+#include "Components.h"
 
 GameObject *player;
 Map *map;
 
 SDL_Renderer *Game::renderer = nullptr;
+
+Manager *manager = new Manager();
+auto& newPlayer(manager->addEntity());
 
 
 bool Game::running() const
@@ -33,6 +37,11 @@ void Game::handleEvents()
 void Game::update()
 {
     player->update();
+
+    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", "
+              << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+
+    manager->update();
 }
 
 
@@ -84,6 +93,8 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     player = new GameObject("assets/90.png");
     map = new Map();
+
+    newPlayer.addComponent<PositionComponent>();
 }
 
 
