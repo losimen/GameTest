@@ -1,7 +1,7 @@
 // GameTest by losimen 18.01.2023
 
-#ifndef GAMETEST_COMPONENTS_H
-#define GAMETEST_COMPONENTS_H
+#ifndef GAMETEST_POSITIONCOMPONENT_H
+#define GAMETEST_POSITIONCOMPONENT_H
 
 #include "ECS.h"
 
@@ -12,6 +12,12 @@ private:
     int yPos;
 
 public:
+    explicit PositionComponent(int x = 0, int y = 0)
+    {
+        xPos = x;
+        yPos = y;
+    }
+
     int x()
     {
         return xPos;
@@ -40,5 +46,4 @@ public:
         yPos = x;
     }
 };
-
-#endif //GAMETEST_COMPONENTS_H
+#endif //GAMETEST_POSITIONCOMPONENT_H

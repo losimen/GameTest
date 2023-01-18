@@ -1,15 +1,14 @@
 // GameTest by losimen 18.12.2022
 #include "Game.h"
 #include "Map.h"
-#include "Components.h"
+#include "ECS/Components.h"
 
-GameObject *player;
 Map *map;
 
 SDL_Renderer *Game::renderer = nullptr;
 
-Manager *manager = new Manager();
-auto& newPlayer(manager->addEntity());
+Manager manager;
+auto& player(manager.addEntity());
 
 
 bool Game::running() const
@@ -36,12 +35,11 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    player->update();
 
-    std::cout << newPlayer.getComponent<PositionComponent>().x() << ", "
-              << newPlayer.getComponent<PositionComponent>().y() << std::endl;
+    std::cout << player.getComponent<PositionComponent>().x() << ", "
+              << player.getComponent<PositionComponent>().y() << std::endl;
 
-    manager->update();
+    manager.update();
 }
 
 
@@ -50,7 +48,7 @@ void Game::render()
     SDL_RenderClear(renderer);
 
     map->drawMap();
-    player->render();
+    manager.draw();
 
     SDL_RenderPresent(renderer);
 }
@@ -91,10 +89,10 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     isRunning = true;
 
-    player = new GameObject("assets/90.png");
     map = new Map();
 
-    newPlayer.addComponent<PositionComponent>();
+    player.addComponent<PositionComponent>();
+    player.addComponent<SpriteComponent>("assets/90.png");
 }
 
 

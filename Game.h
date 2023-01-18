@@ -8,8 +8,6 @@
 #include <SDL2_image/SDL_image.h>
 
 #include "TextureManager.h"
-#include "GameObject.h"
-#include "ECS.h"
 
 
 class Game
