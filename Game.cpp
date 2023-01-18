@@ -1,7 +1,12 @@
 // GameTest by losimen 18.12.2022
 #include "Game.h"
+#include "Map.h"
 
 GameObject *player;
+Map *map;
+
+SDL_Renderer *Game::renderer = nullptr;
+
 
 bool Game::running() const
 {
@@ -35,6 +40,7 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
 
+    map->drawMap();
     player->render();
 
     SDL_RenderPresent(renderer);
@@ -67,7 +73,6 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
     }
 
     renderer = SDL_CreateRenderer(window, -1, 0);
-    SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
     if(renderer == nullptr)
     {
         std::cout << "Renderer creation error. " << std::endl;
@@ -77,7 +82,8 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     isRunning = true;
 
-    player = new GameObject("assets/90.png", renderer);
+    player = new GameObject("assets/90.png");
+    map = new Map();
 }
 
 

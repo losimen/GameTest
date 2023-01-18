@@ -3,7 +3,7 @@
 
 int main()
 {
-    Game game("Lol", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, false);
+    Game game("Lol", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;

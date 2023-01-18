@@ -15,13 +15,14 @@ class Game
 {
 private:
     SDL_Window *window;
-    SDL_Renderer *renderer;
 
     bool isRunning;
 
 public:
     Game() = delete;
     Game(const char *title, int xPos, int yPos, int width, int height, int fullScreen);
+
+    static SDL_Renderer *renderer;
 
     void handleEvents();
     void update();

@@ -17,12 +17,10 @@ private:
     int yPos;
 
     SDL_Texture *objTexture;
-    SDL_Rect srcRect, destRect;
-
-    SDL_Renderer *renderer;
+    SDL_Rect srcRect{}, destRect{};
 
 public:
-    GameObject(const char *textureFileName, SDL_Renderer *renderer, int x = 0, int y = 0);
+    explicit GameObject(const char *textureFileName, int x = 0, int y = 0);
 
     void update();
     void render();

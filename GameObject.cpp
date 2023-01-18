@@ -1,10 +1,11 @@
 // GameTest by losimen 20.12.2022
 #include "GameObject.h"
+#include "Game.h"
 
-GameObject::GameObject(const char *textureFileName, SDL_Renderer *renderer, int x, int y)
+
+GameObject::GameObject(const char *textureFileName, int x, int y)
 {
-    this->renderer = renderer;
-    objTexture = TextureManager::loadTexture(textureFileName, renderer);
+    objTexture = TextureManager::loadTexture(textureFileName);
 
     xPos = x;
     yPos = y;
@@ -29,5 +30,5 @@ void GameObject::update()
 
 void GameObject::render()
 {
-    SDL_RenderCopy(renderer, objTexture, nullptr, &destRect);
+    SDL_RenderCopy(Game::renderer, objTexture, nullptr, &destRect);
 }
