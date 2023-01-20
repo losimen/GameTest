@@ -28,6 +28,11 @@ public:
         destRect.w = destRect.h = 64;
     }
 
+    void setTex(const char *path)
+    {
+        texture = TextureManager::loadTexture(path);
+    }
+
     void update() override
     {
         destRect.x = position->x();

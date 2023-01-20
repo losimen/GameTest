@@ -91,7 +91,7 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     map = new Map();
 
-    player.addComponent<PositionComponent>();
+    player.addComponent<PositionComponent>(100, 500);
     player.addComponent<SpriteComponent>("assets/90.png");
 }
 
