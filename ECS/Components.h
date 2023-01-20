@@ -3,7 +3,7 @@
 #ifndef GAMETEST_COMPONENTS_H
 #define GAMETEST_COMPONENTS_H
 
-#include "PositionComponent.h"
+#include "TransformComponent.h"
 #include "SpriteComponent.h"
 
 #endif //GAMETEST_COMPONENTS_H

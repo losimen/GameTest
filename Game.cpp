@@ -36,8 +36,8 @@ void Game::handleEvents()
 void Game::update()
 {
 
-    std::cout << player.getComponent<PositionComponent>().x() << ", "
-              << player.getComponent<PositionComponent>().y() << std::endl;
+    std::cout << player.getComponent<TransformComponent>().position << std::endl;
+    player.getComponent<TransformComponent>().position += Vector2D(3, 4);
 
     manager.update();
 }
@@ -91,7 +91,7 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     map = new Map();
 
-    player.addComponent<PositionComponent>(100, 500);
+    player.addComponent<TransformComponent>(100, 500);
     player.addComponent<SpriteComponent>("assets/90.png");
 }
 
