@@ -10,11 +10,19 @@ class TransformComponent: public Component
 {
 public:
     Vector2D position;
+    Vector2D velocity;
 
+    int speed = 3;
     TransformComponent()
     {
         position.x = 0;
         position.y = 0;
+    }
+
+    void init () override
+    {
+        velocity.x = 0;
+        velocity.y = 0;
     }
 
     explicit TransformComponent(float x = 0, float y = 0)
@@ -25,7 +33,8 @@ public:
 
     void update() override
     {
-
+        position.x += velocity.x * speed;
+        position.y += velocity.y * speed;
     }
 };
 #endif //GAMETEST_TRANSFORMCOMPONENT_H

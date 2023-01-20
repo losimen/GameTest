@@ -18,6 +18,8 @@ private:
     bool isRunning;
 
 public:
+    static SDL_Event event;
+
     Game() = delete;
     Game(const char *title, int xPos, int yPos, int width, int height, int fullScreen);
 

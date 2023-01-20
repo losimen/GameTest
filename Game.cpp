@@ -9,6 +9,8 @@ SDL_Renderer *Game::renderer = nullptr;
 
 Manager manager;
 auto& player(manager.addEntity());
+SDL_Event Game::event;
+
 
 
 bool Game::running() const
@@ -19,7 +21,6 @@ bool Game::running() const
 
 void Game::handleEvents()
 {
-    SDL_Event event;
     SDL_PollEvent(&event);
 
     switch (event.type)
@@ -35,9 +36,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-
     std::cout << player.getComponent<TransformComponent>().position << std::endl;
-    player.getComponent<TransformComponent>().position += Vector2D(3, 4);
 
     manager.update();
 }
@@ -93,6 +92,7 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
 
     player.addComponent<TransformComponent>(100, 500);
     player.addComponent<SpriteComponent>("assets/90.png");
+    player.addComponent<KeyboardController>();
 }
 
 
