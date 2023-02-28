@@ -84,3 +84,11 @@ void Map::drawMap()
         }
     }
 }
+
+
+Map::~Map()
+{
+    SDL_DestroyTexture(dirt);
+    SDL_DestroyTexture(grass);
+    SDL_DestroyTexture(water);
+}

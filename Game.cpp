@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Map.h"
 #include "ECS/Components.h"
+#include "Collision.h"
 
 Map *map;
 
@@ -9,9 +10,9 @@ SDL_Renderer *Game::renderer = nullptr;
 
 Manager manager;
 auto& player(manager.addEntity());
+auto& wall(manager.addEntity());
+
 SDL_Event Game::event;
-
-
 
 bool Game::running() const
 {
@@ -36,7 +37,11 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    std::cout << player.getComponent<TransformComponent>().position << std::endl;
+    if (Collision::AABB(player.getComponent<ColliderComponent>().collider,
+                        wall.getComponent<ColliderComponent>().collider))
+    {
+        std::cout << "Collision" << std::endl;
+    }
 
     manager.update();
 }
@@ -93,6 +98,11 @@ Game::Game(const char *title, int xPos, int yPos, int width, int height, int ful
     player.addComponent<TransformComponent>(100, 500);
     player.addComponent<SpriteComponent>("assets/90.png");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("player");
+
+    wall.addComponent<TransformComponent>(300, 300, 300, 20, 1);
+    wall.addComponent<SpriteComponent>("assets/dirt.png");
+    wall.addComponent<ColliderComponent>("wall");
 }
 
 

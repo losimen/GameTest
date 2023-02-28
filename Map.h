@@ -18,6 +18,7 @@ private:
     int map[20][25];
 public:
     Map();
+    ~Map();
 
     void loadMap(int arr[20][25]);
     void drawMap();
